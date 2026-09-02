@@ -1,0 +1,63 @@
+# =====================================================================
+# Configuración del Exportador / Respaldador de Correos IMAP (TOML)
+# =====================================================================
+
+# Directorio base donde se almacenarán las descargas y archivos comprimidos
+output_dir = "backups"
+
+# Límite de cuentas procesadas simultáneamente (ideal: 2 a 5 para evitar rate-limits de hosting)
+concurrency_limit = 3
+
+# Modalidad de compresión ZIP:
+# - "PerAccount": Genera un archivo ZIP individual por cada cuenta (ej: backups/midominio.com/contacto@midominio.com_backup.zip)
+# - "Consolidated": Genera un único archivo ZIP maestro con todas las cuentas y dominios
+# - "None": No comprime, deja las carpetas y archivos .eml directamente en disco
+zip_mode = "PerAccount"
+
+# Eliminar las carpetas con archivos .eml sueltos después de empaquetar con éxito en ZIP
+cleanup_raw_after_zip = false
+
+# Cantidad de reintentos automáticos ante cortes o desconexiones IMAP
+retry_attempts = 3
+
+# Segundos de espera base entre reintentos
+retry_delay_secs = 5
+
+# Tiempo límite (timeout) en segundos para operaciones de red
+timeout_secs = 45
+
+# Si es true, omite mensajes que ya existan en disco con el mismo nombre y tamaño (modo sincronización incremental)
+skip_existing = true
+
+# =====================================================================
+# Lista de Cuentas de Correo a Respaldar
+# =====================================================================
+
+[[accounts]]
+email = "contacto@midominio.com"
+password = "PasswordSeguro123!"
+host = "imap.hostinger.com"
+port = 993
+tls = true
+label = "midominio.com"
+# Opcional: lista de carpetas a ignorar (coincidencia insensible a mayúsculas/minúsculas)
+exclude_folders = ["Spam", "Trash", "Papelera", "Correo no deseado"]
+# Opcional: si se define, solo descargará estas carpetas
+# include_only_folders = ["INBOX", "Sent"]
+
+[[accounts]]
+email = "ventas@miotracuenta.com"
+password = "OtraPasswordSuperSegura456!"
+host = "mail.miotracuenta.com"
+port = 993
+tls = true
+label = "miotracuenta.com"
+exclude_folders = ["Trash", "Spam"]
+
+[[accounts]]
+email = "gerencia@corporativo.es"
+password = "ClaveCorporativa789!"
+host = "imap.secureserver.net"
+port = 993
+tls = true
+label = "corporativo.es"

@@ -1,0 +1,38 @@
+{
+  "output_dir": "backups",
+  "concurrency_limit": 3,
+  "zip_mode": "PerAccount",
+  "cleanup_raw_after_zip": false,
+  "retry_attempts": 3,
+  "retry_delay_secs": 5,
+  "timeout_secs": 45,
+  "skip_existing": true,
+  "accounts": [
+    {
+      "email": "contacto@midominio.com",
+      "password": "PasswordSeguro123!",
+      "host": "imap.hostinger.com",
+      "port": 993,
+      "tls": true,
+      "label": "midominio.com",
+      "exclude_folders": ["Spam", "Trash", "Papelera", "Correo no deseado"]
+    },
+    {
+      "email": "ventas@miotracuenta.com",
+      "password": "OtraPasswordSuperSegura456!",
+      "host": "mail.miotracuenta.com",
+      "port": 993,
+      "tls": true,
+      "label": "miotracuenta.com",
+      "exclude_folders": ["Trash", "Spam"]
+    },
+    {
+      "email": "gerencia@corporativo.es",
+      "password": "ClaveCorporativa789!",
+      "host": "imap.secureserver.net",
+      "port": 993,
+      "tls": true,
+      "label": "corporativo.es"
+    }
+  ]
+}
