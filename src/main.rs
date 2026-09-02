@@ -1,4 +1,4 @@
-#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // Oculta la consola de Windows en release para que sea una app de escritorio 100% nativa
+#![cfg_attr(not(debug_assertions), windows_subsystem = "windows")] // Oculta la consola de Windows en release
 
 mod app;
 mod archiver;
@@ -13,12 +13,20 @@ use eframe::egui::{self, Vec2, ViewportBuilder};
 fn main() -> eframe::Result<()> {
     env_logger::init();
 
+    let icon_data = eframe::icon_data::from_png_bytes(include_bytes!("../assets/icon.png")).ok();
+
+    let mut viewport = ViewportBuilder::default()
+        .with_title("IMAP Email Backup & Migration Suite")
+        .with_inner_size(Vec2::new(980.0, 720.0))
+        .with_min_inner_size(Vec2::new(760.0, 540.0))
+        .with_resizable(true);
+
+    if let Some(icon) = icon_data {
+        viewport = viewport.with_icon(icon);
+    }
+
     let native_options = eframe::NativeOptions {
-        viewport: ViewportBuilder::default()
-            .with_title("IMAP Email Backup & Migration Suite")
-            .with_inner_size(Vec2::new(980.0, 720.0))
-            .with_min_inner_size(Vec2::new(760.0, 540.0))
-            .with_resizable(true),
+        viewport,
         default_theme: eframe::Theme::Dark,
         ..Default::default()
     };

@@ -1,6 +1,6 @@
 [package]
 name = "imap-backup-cli"
-version = "1.1.0"
+version = "1.2.0"
 edition = "2021"
 authors = ["Sistemas <admin@local>"]
 description = "Herramienta nativa en Rust con GUI (egui) para respaldo y migración de buzones IMAP a EML y ZIP"
@@ -11,6 +11,7 @@ eframe = { version = "0.27", default-features = false, features = ["default_font
 egui = "0.27"
 egui_extras = { version = "0.27", features = ["default"] }
 rfd = "0.14" # Native file and folder dialogs
+image = { version = "0.24", default-features = false, features = ["png"] }
 
 # Async Runtime & Concurrency
 tokio = { version = "1.38", features = ["full"] }
@@ -37,6 +38,9 @@ thiserror = "1.0"
 colored = "2.1"
 log = "0.4"
 env_logger = "0.11"
+
+[build-dependencies]
+winresource = "0.1"
 
 [profile.release]
 opt-level = 3
