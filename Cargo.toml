@@ -2,8 +2,11 @@
 name = "imap-backup-cli"
 version = "1.2.0"
 edition = "2021"
-authors = ["Sistemas <admin@local>"]
+authors = ["Esteban Chávez <admin@local>"]
 description = "Herramienta nativa en Rust con GUI (egui) para respaldo y migración de buzones IMAP a EML y ZIP"
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/EstebanChavez27/imap-backup"
+readme = "README.md"
 
 [dependencies]
 # GUI Framework (Immediate Mode & Native Windowing)

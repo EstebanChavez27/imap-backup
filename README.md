@@ -136,3 +136,17 @@ El flujo de comunicación entre el hilo de la UI y el motor de descarga funciona
 |  - Compresión ZIP final                                     |
 +-------------------------------------------------------------+
 ```
+
+---
+
+## 📄 Licencia
+
+Este proyecto está licenciado bajo los términos de la **GNU Affero General Public License v3.0 (AGPL-3.0-or-later)**. Consulta el archivo [`LICENSE`](LICENSE) para ver el texto completo de la licencia.
+
+### ⚖️ Derechos y Obligaciones Principales
+
+- **Libertad de Uso y Modificación:** Puedes usar, estudiar, modificar y compilar este software libremente para fines personales, empresariales o comerciales.
+- **Copyleft Fuerte:** Si modificas este programa o creas obras derivadas y las distribuyes (ya sea en código fuente o en binarios ejecutables), debes publicar el código fuente completo bajo los mismos términos de la GNU AGPLv3.
+- **Cláusula de Interacción en Red (Sección 13):** A diferencia de la GPL estándar, si ejecutas una versión modificada de esta herramienta en un servidor remoto o como servicio en la nube (SaaS / Web Service) para permitir que otros interactúen con ella a través de una red, estás legalmente obligado a poner el código fuente correspondiente a disposición de todos los usuarios de la red de forma pública y gratuita.
+- **Sin Garantía:** El software se distribuye "tal cual" (*as-is*), sin garantías expresas o implícitas de ningún tipo.
+
