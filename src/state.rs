@@ -155,13 +155,17 @@ impl AccountEditModal {
     }
 
     pub fn to_account_config(&self) -> Result<AccountConfig, String> {
-        if self.email.trim().is_empty() {
+        let clean_email = self.email.trim().replace(['\r', '\n'], "");
+        let clean_host = self.host.trim().replace(['\r', '\n'], "");
+        let clean_password = self.password.replace(['\r', '\n'], "");
+
+        if clean_email.is_empty() {
             return Err("El correo electrónico no puede estar vacío.".to_string());
         }
-        if self.host.trim().is_empty() {
+        if clean_host.is_empty() {
             return Err("El host del servidor IMAP no puede estar vacío.".to_string());
         }
-        if self.password.is_empty() {
+        if clean_password.is_empty() {
             return Err("La contraseña no puede estar vacía.".to_string());
         }
 
@@ -185,9 +189,9 @@ impl AccountEditModal {
         };
 
         Ok(AccountConfig {
-            email: self.email.trim().to_string(),
-            password: self.password.clone(),
-            host: self.host.trim().to_string(),
+            email: clean_email,
+            password: clean_password,
+            host: clean_host,
             port,
             tls: self.tls,
             label,

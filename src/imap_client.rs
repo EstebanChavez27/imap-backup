@@ -93,11 +93,15 @@ impl<'a> ImapDownloader<'a> {
             .build()
             .with_context(|| "Error inicializando conector TLS de native-tls")?;
 
-        let tcp_stream = TcpStream::connect((self.account.host.as_str(), self.account.port))
+        let clean_host = self.account.host.trim().replace(['\r', '\n'], "");
+        let clean_email = self.account.email.trim().replace(['\r', '\n'], "");
+        let clean_password = self.account.password.replace(['\r', '\n'], "");
+
+        let tcp_stream = TcpStream::connect((clean_host.as_str(), self.account.port))
             .with_context(|| {
                 format!(
                     "No se pudo conectar vía TCP a {}:{}",
-                    self.account.host, self.account.port
+                    clean_host, self.account.port
                 )
             })?;
 
@@ -106,13 +110,13 @@ impl<'a> ImapDownloader<'a> {
         tcp_stream.set_write_timeout(Some(timeout))?;
 
         let tls_stream = tls
-            .connect(&self.account.host, tcp_stream)
-            .with_context(|| format!("Error en apretón de manos TLS con {}", self.account.host))?;
+            .connect(&clean_host, tcp_stream)
+            .with_context(|| format!("Error en apretón de manos TLS con {}", clean_host))?;
 
         let client = imap::Client::new(tls_stream);
 
         let session = client
-            .login(&self.account.email, &self.account.password)
+            .login(&clean_email, &clean_password)
             .map_err(|(e, _)| anyhow::anyhow!("Fallo de autenticación IMAP: {}", e))?;
 
         Ok(session)

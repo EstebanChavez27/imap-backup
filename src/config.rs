@@ -126,7 +126,7 @@ impl AppConfig {
             .unwrap_or("")
             .to_lowercase();
 
-        let config: AppConfig = match extension.as_str() {
+        let mut config: AppConfig = match extension.as_str() {
             "json" => serde_json::from_str(&content)
                 .with_context(|| "Error parseando formato JSON de configuración")?,
             "toml" => toml::from_str(&content)
@@ -141,6 +141,12 @@ impl AppConfig {
                 }
             }
         };
+
+        for acc in &mut config.accounts {
+            acc.email = acc.email.trim().replace(['\r', '\n'], "");
+            acc.password = acc.password.replace(['\r', '\n'], "");
+            acc.host = acc.host.trim().replace(['\r', '\n'], "");
+        }
 
         config.validate()?;
         Ok(config)

@@ -653,15 +653,21 @@ impl eframe::App for ImapBackupApp {
 
                     egui::Grid::new("account_edit_grid").num_columns(2).spacing([10.0, 8.0]).show(ui, |ui| {
                         ui.label("Correo / Usuario:");
-                        ui.text_edit_singleline(&mut self.account_modal.email);
+                        if ui.text_edit_singleline(&mut self.account_modal.email).changed() {
+                            self.account_modal.email.retain(|c| c != '\r' && c != '\n');
+                        }
                         ui.end_row();
 
                         ui.label("Contraseña:");
-                        ui.add(egui::TextEdit::singleline(&mut self.account_modal.password).password(true));
+                        if ui.add(egui::TextEdit::singleline(&mut self.account_modal.password).password(true)).changed() {
+                            self.account_modal.password.retain(|c| c != '\r' && c != '\n');
+                        }
                         ui.end_row();
 
                         ui.label("Servidor IMAP:");
-                        ui.text_edit_singleline(&mut self.account_modal.host);
+                        if ui.text_edit_singleline(&mut self.account_modal.host).changed() {
+                            self.account_modal.host.retain(|c| c != '\r' && c != '\n');
+                        }
                         ui.end_row();
 
                         ui.label("Puerto:");
