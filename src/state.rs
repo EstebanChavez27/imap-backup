@@ -200,3 +200,68 @@ impl AccountEditModal {
         })
     }
 }
+
+#[derive(Debug, Clone, Default)]
+pub struct RestoreSummary {
+    pub total_uploaded: usize,
+    pub total_folders: usize,
+    pub total_bytes: u64,
+    pub total_errors: usize,
+    pub elapsed_seconds: f64,
+}
+
+#[derive(Debug, Clone)]
+#[allow(dead_code)]
+pub enum RestoreEvent {
+    Log(LogEntry),
+    Progress {
+        folder: String,
+        current: u64,
+        total: u64,
+        bytes: u64,
+    },
+    Finished(RestoreSummary),
+}
+
+#[derive(Debug, Clone)]
+#[allow(dead_code)]
+pub struct RestoreConfigState {
+    pub host: String,
+    pub port: String,
+    pub email: String,
+    pub password: String,
+    pub tls: bool,
+    pub source_path: Option<std::path::PathBuf>,
+    pub detected_folders: usize,
+    pub detected_emails: usize,
+    pub is_running: bool,
+    pub status: String,
+    pub current_folder: String,
+    pub progress_current: u64,
+    pub progress_total: u64,
+    pub last_summary: Option<RestoreSummary>,
+    pub error_msg: Option<String>,
+}
+
+impl Default for RestoreConfigState {
+    fn default() -> Self {
+        Self {
+            host: "imap.hostinger.com".to_string(),
+            port: "993".to_string(),
+            email: String::new(),
+            password: String::new(),
+            tls: true,
+            source_path: None,
+            detected_folders: 0,
+            detected_emails: 0,
+            is_running: false,
+            status: "Listo para restaurar".to_string(),
+            current_folder: String::new(),
+            progress_current: 0,
+            progress_total: 0,
+            last_summary: None,
+            error_msg: None,
+        }
+    }
+}
+

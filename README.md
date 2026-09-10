@@ -17,19 +17,20 @@ Empaqueta los correos en formato estándar `.eml` (RFC 822) organizados por domi
 
 ## 🖥️ Características de la Interfaz Gráfica
 
-1. **Gestión de Configuración y Cuentas:**
-   - Cargar y guardar archivos de configuración en formato **TOML** (`config.toml`) o **JSON** (`config.json`).
-   - Tabla interactiva para visualizar las cuentas configuradas.
-   - Diálogo modal para **Añadir**, **Editar** y **Eliminar** credenciales directamente desde la UI.
-2. **Control de Opciones Globales:**
-   - Selector visual de carpeta de destino.
-   - Ajuste dinámico del límite de concurrencia (1 a 10 cuentas simultáneas).
-   - Selector de modo ZIP (`Por Cuenta`, `Consolidado Maestro`, `Sin Compresión`).
-   - Interruptores para limpieza de `.eml` temporales y sincronización incremental.
-3. **Monitoreo en Tiempo Real:**
-   - Barra de progreso por cada buzón y carpeta IMAP.
-   - Consola de actividad integrada con colores por tipo de evento (`INFO`, `WARN`, `ERROR`, `OK`) y auto-scroll.
-   - Notificaciones emergentes de estado.
+La suite cuenta con dos modos principales accesibles mediante pestañas:
+
+### 📥 1. Pestaña "Respaldar / Exportar":
+- **Gestión de Cuentas:** Cargar y guardar archivos de configuración en formato **TOML** (`config.toml`) o **JSON** (`config.json`).
+- **Tabla interactiva:** Visualizar cuentas configuradas con modal para **Añadir**, **Editar** y **Eliminar** credenciales.
+- **Control de Opciones:** Selector de destino, concurrencia (1 a 10 cuentas), modos ZIP (`Por Cuenta`, `Consolidado`, `Sin Compresión`), limpieza automática y sincronización incremental.
+- **Monitoreo en Tiempo Real:** Barras de progreso multi-hilo y consola de logs interactiva.
+
+### 📤 2. Pestaña "Restaurar / Importar Masivo":
+- **Supera los límites de Webmail (Roundcube / Hostinger):** Evita la molesta restricción de *"Máximo 20 archivos de cada vez"* y los timeouts del navegador.
+- **Recreación Automática de Carpetas (`CREATE`):** Detecta la jerarquía de carpetas y subcarpetas del backup y las recrea en el servidor remoto si no existen.
+- **Inyección Masiva Continua (`APPEND`):** Sube miles de correos `.eml` directamente por socket TLS al buzón de destino respetando el estándar RFC 822 con adjuntos, fechas y metadatos intactos.
+- **Soporte de Entrada Flexible:** Permite elegir directamente un archivo `.zip` comprimido o una carpeta con correos sueltos.
+- **Contador y Estimación:** Analiza y muestra el número exacto de correos y carpetas antes de iniciar la transferencia.
 
 ---
 

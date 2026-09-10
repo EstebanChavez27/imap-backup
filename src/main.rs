@@ -19,6 +19,7 @@ mod app;
 mod archiver;
 mod config;
 mod imap_client;
+mod imap_uploader;
 mod state;
 mod storage;
 
