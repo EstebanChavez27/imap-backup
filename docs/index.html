@@ -1,0 +1,320 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <title>IMAP Backup — Respalda tus correos</title>
+  <meta name="description" content="IMAP Backup es una aplicación de escritorio nativa para respaldar, exportar, sincronizar y restaurar cuentas de correo IMAP.">
+
+  <link rel="icon" href="img/icon.png">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+  <header class="hero" id="inicio">
+    <nav class="nav container">
+      <a class="brand" href="#inicio" aria-label="IMAP Backup">
+        <span class="brand-mark">
+          <span class="brand-envelope"></span>
+          <span class="brand-download">↓</span>
+        </span>
+        <span>IMAP Backup</span>
+      </a>
+
+      <div class="nav-links">
+        <a href="#caracteristicas">Características</a>
+        <a href="#funciones">Funciones</a>
+        <a href="#tecnologia">Tecnología</a>
+        <a class="nav-button" href="https://github.com/EstebanChavez27/imap-backup/releases" target="_blank" rel="noopener">
+          Descargar
+        </a>
+      </div>
+    </nav>
+
+    <div class="container hero-grid">
+      <div class="hero-copy">
+        <div class="eyebrow"><span></span> Backup de correo IMAP</div>
+
+        <h1>
+          Tus correos.<br>
+          <strong>Siempre respaldados.</strong>
+        </h1>
+
+        <p class="hero-text">
+          Una aplicación de escritorio rápida y ligera para respaldar,
+          exportar, sincronizar y restaurar cuentas de correo mediante IMAP.
+        </p>
+
+        <div class="hero-actions">
+          <a class="button button-primary" href="https://github.com/EstebanChavez27/imap-backup/releases" target="_blank" rel="noopener">
+            <span>↓</span> Descargar IMAP Backup
+          </a>
+          <a class="button button-secondary" href="#caracteristicas">
+            Ver características
+          </a>
+        </div>
+
+        <div class="platforms">
+          <span>Windows</span>
+          <span>Linux</span>
+          <span>Rust</span>
+          <span>Open Source</span>
+        </div>
+      </div>
+
+      <div class="hero-art" aria-hidden="true">
+        <div class="art-glow"></div>
+
+        <div class="mail-card">
+          <div class="mail-icon"></div>
+        </div>
+
+        <div class="flow-line"></div>
+
+        <div class="server-stack">
+          <div class="server"><i></i><i></i></div>
+          <div class="server"><i></i><i></i></div>
+          <div class="server"><i></i><i></i></div>
+        </div>
+
+        <div class="backup-folder">
+          <span class="folder-tab"></span>
+          <span class="folder-arrow">↓</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="hero-wave"></div>
+  </header>
+
+  <main>
+
+    <section class="section features" id="caracteristicas">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Características</span>
+          <h2>Todo lo que necesitás para proteger tu correo.</h2>
+          <p>
+            Diseñado para trabajar con cuentas IMAP de forma práctica,
+            transparente y sin depender del navegador.
+          </p>
+        </div>
+
+        <div class="feature-grid">
+          <article class="feature-card">
+            <div class="feature-icon">↓</div>
+            <h3>Backup IMAP</h3>
+            <p>Descargá tus mensajes desde el servidor y conservá una copia local organizada.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">↻</div>
+            <h3>Sincronización incremental</h3>
+            <p>Actualizá un backup existente sin volver a descargar innecesariamente los mensajes.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⇧</div>
+            <h3>Restauración masiva</h3>
+            <p>Volvé a subir grandes cantidades de mensajes directamente a un servidor IMAP.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">▦</div>
+            <h3>Carpetas preservadas</h3>
+            <p>Reconoce la estructura de carpetas y subcarpetas y puede recrearla en el destino.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">ZIP</div>
+            <h3>Compresión ZIP</h3>
+            <p>Elegí entre ZIP por cuenta, un ZIP consolidado o almacenamiento sin compresión.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">⚡</div>
+            <h3>Procesamiento concurrente</h3>
+            <p>Procesá varias cuentas simultáneamente para acelerar operaciones de backup y restauración.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">●</div>
+            <h3>Progreso en tiempo real</h3>
+            <p>Visualizá barras de progreso y logs mientras se ejecutan las operaciones.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">TLS</div>
+            <h3>Conexiones TLS</h3>
+            <p>Comunicación protegida con servidores IMAP mediante conexiones TLS.</p>
+          </article>
+
+          <article class="feature-card">
+            <div class="feature-icon">.EML</div>
+            <h3>Formato estándar</h3>
+            <p>Los mensajes se almacenan como archivos .eml compatibles con RFC 822.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section modes" id="funciones">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Funciones</span>
+          <h2>Respaldá, migrá y restaurá desde un mismo lugar.</h2>
+          <p>Dos flujos de trabajo para cubrir las tareas más habituales con correo IMAP.</p>
+        </div>
+
+        <div class="mode-grid">
+          <article class="mode-card">
+            <div class="mode-number">01</div>
+            <h3>Respaldar / Exportar</h3>
+            <p>Descargá tus cuentas y mantené una copia local de tus mensajes.</p>
+            <ul>
+              <li>Agregar, editar y eliminar cuentas</li>
+              <li>Configuración TOML o JSON</li>
+              <li>Destino de almacenamiento configurable</li>
+              <li>Concurrencia configurable</li>
+              <li>ZIP por cuenta o consolidado</li>
+              <li>Sincronización incremental</li>
+              <li>Limpieza automática</li>
+              <li>Logs y progreso en tiempo real</li>
+            </ul>
+          </article>
+
+          <article class="mode-card">
+            <div class="mode-number">02</div>
+            <h3>Restaurar / Importar</h3>
+            <p>Recuperá una copia completa directamente sobre un servidor IMAP.</p>
+            <ul>
+              <li>Importación desde ZIP o carpeta</li>
+              <li>Detección de correos y carpetas</li>
+              <li>Creación automática de carpetas</li>
+              <li>Inyección masiva mediante APPEND</li>
+              <li>Transferencia directa vía TLS</li>
+              <li>Respeta fechas y metadatos</li>
+              <li>Procesamiento concurrente</li>
+              <li>Sin depender de los límites del webmail</li>
+            </ul>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section workflow">
+      <div class="container">
+        <div class="section-heading">
+          <span class="section-label">Cómo funciona</span>
+          <h2>Del servidor a tu backup en pocos pasos.</h2>
+        </div>
+
+        <div class="workflow-grid">
+          <article class="step">
+            <div class="step-number">1</div>
+            <h3>Configurá</h3>
+            <p>Agregá tus cuentas IMAP y elegí dónde guardar el backup.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">2</div>
+            <h3>Respaldá</h3>
+            <p>IMAP Backup descarga los mensajes y conserva su estructura.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">3</div>
+            <h3>Guardá</h3>
+            <p>Tus correos quedan almacenados localmente como archivos .eml.</p>
+          </article>
+
+          <article class="step">
+            <div class="step-number">4</div>
+            <h3>Restaurá</h3>
+            <p>Volvé a subirlos a un servidor IMAP cuando sea necesario.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="tech-section" id="tecnologia">
+      <div class="container tech-grid">
+        <div class="tech-copy">
+          <span class="section-label light">Tecnología</span>
+          <h2>Nativo. Ligero. Sin Electron.</h2>
+          <p>
+            IMAP Backup está desarrollado en Rust utilizando egui y eframe.
+            Las tareas de red y procesamiento se ejecutan en segundo plano
+            para mantener una interfaz fluida.
+          </p>
+        </div>
+
+        <div class="tech-list">
+          <div class="tech-item">
+            <strong>🦀 Rust</strong>
+            <span>Código nativo de alto rendimiento.</span>
+          </div>
+          <div class="tech-item">
+            <strong>⚡ Bajo consumo</strong>
+            <span>Diseñado para utilizar pocos recursos.</span>
+          </div>
+          <div class="tech-item">
+            <strong>🖥️ Sin WebView</strong>
+            <span>Sin Electron ni Tauri.</span>
+          </div>
+          <div class="tech-item">
+            <strong>🔄 Procesamiento asíncrono</strong>
+            <span>Las operaciones no bloquean la interfaz.</span>
+          </div>
+          <div class="tech-item">
+            <strong>📦 Portable</strong>
+            <span>Un ejecutable listo para utilizar.</span>
+          </div>
+          <div class="tech-item">
+            <strong>🐧 Windows + Linux</strong>
+            <span>Soporte para los principales sistemas de escritorio.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section download-section">
+      <div class="container">
+        <div class="download-box">
+          <div class="eyebrow"><span></span> Open Source</div>
+          <h2>¿Listo para respaldar tus correos?</h2>
+          <p>
+            Descargá la última versión, consultá las novedades de cada release
+            y comenzá a proteger tus cuentas IMAP.
+          </p>
+
+          <a class="button button-primary" href="https://github.com/EstebanChavez27/imap-backup/releases" target="_blank" rel="noopener">
+            <span>↓</span> Ver descargas
+          </a>
+
+          <small>Las versiones disponibles se publican en GitHub Releases.</small>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    <div class="container footer-inner">
+      <div>
+        <strong>IMAP Backup</strong>
+        <span> · Backup y migración de correo IMAP</span>
+      </div>
+
+      <div class="footer-links">
+        <a href="https://github.com/EstebanChavez27/imap-backup" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://github.com/EstebanChavez27/imap-backup/releases" target="_blank" rel="noopener">Releases</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>
