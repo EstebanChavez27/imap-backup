@@ -1,3 +1,6 @@
+<img width="1774" height="887" alt="imap-backup" src="https://github.com/user-attachments/assets/7efbcc65-fffd-484a-bf31-0da91b66053d" />
+
+
 # 🚀 IMAP Email Backup & Migration Suite (GUI Nativa en Rust)
 
 Aplicación de escritorio **100% nativa en Rust**, ultra ligera y de alto rendimiento, diseñada con **`egui`** y **`eframe`** para respaldar, sincronizar y migrar buzones de correo electrónico vía **IMAP sobre TLS**.
