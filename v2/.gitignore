@@ -1,0 +1,13 @@
+# El .gitignore de la raíz ignora Cargo.lock. Para una aplicación binaria el lock
+# debe versionarse (builds reproducibles + caché de CI utilizable).
+!Cargo.lock
+
+# Archivos locales con credenciales
+config.toml
+config.json
+secrets.toml
+backups/
+*.eml
+*.zip
+*.mbox
+*.log

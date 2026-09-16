@@ -1,0 +1,76 @@
+[package]
+name = "imap-backup"
+version = "2.0.0"
+edition = "2021"
+authors = ["Esteban Chávez <admin@local>"]
+description = "Backup, verificación y migración de buzones IMAP (GUI egui + modo headless)"
+license = "AGPL-3.0-or-later"
+repository = "https://github.com/EstebanChavez27/imap-backup"
+readme = "README.md"
+
+# `cargo run` sin argumentos lanza el motor headless (que sin comandos abre la GUI).
+default-run = "imap-backup"
+
+[features]
+# La interfaz gráfica se puede desactivar (`--no-default-features`) para compilar
+# solo el motor headless: sin GTK, sin X11 y con un binario mucho más chico.
+default = ["gui"]
+gui = []
+
+[[bin]]
+name = "imap-backup-gui"
+path = "src/bin/imap-backup-gui.rs"
+required-features = ["gui"]
+
+[dependencies]
+# GUI: se habilitan x11/wayland explícitamente porque winit no compila en Linux sin ellos.
+eframe = { version = "0.27", default-features = false, features = [
+    "default_fonts",
+    "glow",
+    "persistence",
+    "x11",
+    "wayland",
+] }
+egui = "0.27"
+egui_extras = { version = "0.27", default-features = false }
+rfd = "0.14"
+
+# IMAP & TLS
+imap = { version = "3.0.0-alpha.15", default-features = false, features = ["native-tls"] }
+imap-proto = "0.16"
+native-tls = "0.2"
+
+# Configuración y serialización
+serde = { version = "1.0", features = ["derive"] }
+serde_json = "1.0"
+toml = "0.8"
+directories-next = "2"
+
+# Almacenamiento y compresión
+zip = { version = "2.1", default-features = false, features = ["deflate", "time"] }
+walkdir = "2.5"
+sanitize-filename = "0.5"
+
+# Utilidades
+chrono = { version = "0.4", features = ["serde"] }
+anyhow = "1.0"
+sha2 = "0.10"
+hex = "0.4"
+
+[target.'cfg(unix)'.dependencies]
+libc = "0.2"
+
+[target.'cfg(windows)'.dependencies]
+windows-sys = { version = "0.52", features = [
+    "Win32_Foundation",
+    "Win32_Storage_FileSystem",
+] }
+
+[profile.release]
+opt-level = 3
+lto = true
+codegen-units = 1
+strip = true
+# Nota: se abandona panic = "abort" a propósito. Con abort, cualquier panic imprevisto
+# en un hilo de trabajo mata la aplicación y aborta un backup en curso. Con unwind el
+# hilo muere, el error se reporta y el usuario conserva su progreso y su manifiesto.
