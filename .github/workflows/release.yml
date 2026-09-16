@@ -2,8 +2,9 @@ name: Build and Publish GitHub Release
 
 on:
   push:
+    # Solo releases de la v1: la v2 usa tags v2* (ver release-v2.yml).
     tags:
-      - 'v*'
+      - 'v1*'
   workflow_dispatch:
     inputs:
       tag_name:
