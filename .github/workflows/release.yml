@@ -20,7 +20,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -41,17 +41,18 @@ jobs:
           Compress-Archive -Path "release_pkg_win/*" -DestinationPath "imap-backup-windows-x64.zip"
 
       - name: Upload Windows Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: windows-release-zip
           path: imap-backup-windows-x64.zip
+          if-no-files-found: error
 
   build-linux:
     name: Build Linux Binary
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Linux system dependencies
         run: |
@@ -76,10 +77,11 @@ jobs:
           tar -czvf imap-backup-linux-x64.tar.gz -C release_pkg_linux .
 
       - name: Upload Linux Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: linux-release-tar
           path: imap-backup-linux-x64.tar.gz
+          if-no-files-found: error
 
   publish-release:
     name: Publish GitHub Release
@@ -87,16 +89,16 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Download Windows package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: windows-release-zip
           path: ./dist
 
       - name: Download Linux package
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v8
         with:
           name: linux-release-tar
           path: ./dist
@@ -111,7 +113,7 @@ jobs:
           fi
 
       - name: Create GitHub Release
-        uses: softprops/action-gh-release@v2
+        uses: softprops/action-gh-release@v3
         with:
           tag_name: ${{ steps.tag_info.outputs.TAG_NAME }}
           name: "IMAP Backup & Migration Suite ${{ steps.tag_info.outputs.TAG_NAME }}"

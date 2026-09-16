@@ -14,7 +14,7 @@ jobs:
     runs-on: windows-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Rust toolchain
         uses: dtolnay/rust-toolchain@stable
@@ -22,7 +22,7 @@ jobs:
           targets: x86_64-pc-windows-msvc
 
       - name: Cache cargo dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/bin/
@@ -36,17 +36,18 @@ jobs:
         run: cargo build --release --target x86_64-pc-windows-msvc
 
       - name: Upload Windows Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: imap-backup-gui-windows-x64
           path: target/x86_64-pc-windows-msvc/release/imap-backup-cli.exe
+          if-no-files-found: error
 
   build-linux:
     name: Build Linux (x86_64-unknown-linux-gnu)
     runs-on: ubuntu-latest
     steps:
       - name: Checkout repository
-        uses: actions/checkout@v4
+        uses: actions/checkout@v7
 
       - name: Install Linux system dependencies (GTK3, X11, OpenSSL)
         run: |
@@ -60,7 +61,7 @@ jobs:
           targets: x86_64-unknown-linux-gnu
 
       - name: Cache cargo dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v6
         with:
           path: |
             ~/.cargo/bin/
@@ -74,7 +75,8 @@ jobs:
         run: cargo build --release --target x86_64-unknown-linux-gnu
 
       - name: Upload Linux Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v7
         with:
           name: imap-backup-gui-linux-x64
           path: target/x86_64-unknown-linux-gnu/release/imap-backup-cli
+          if-no-files-found: error
