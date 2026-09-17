@@ -1,6 +1,6 @@
 [package]
 name = "imap-backup"
-version = "2.0.0"
+version = "2.0.1"
 edition = "2021"
 authors = ["Esteban Chávez <admin@local>"]
 description = "Backup, verificación y migración de buzones IMAP (GUI egui + modo headless)"
@@ -16,6 +16,11 @@ default-run = "imap-backup"
 # solo el motor headless: sin GTK, sin X11 y con un binario mucho más chico.
 default = ["gui"]
 gui = []
+
+[build-dependencies]
+# Incrusta assets/icon.ico como recurso de Windows: ícono del .exe en el
+# Explorer y la barra de tareas. No-op en otros sistemas operativos.
+winresource = "0.1"
 
 [[bin]]
 name = "imap-backup-gui"
